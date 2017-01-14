@@ -1,0 +1,13 @@
+<?
+
+
+  $routes = array(
+
+
+     '{controller}/{action}' => array( 'controller' => '[a-z]' , 'action' => '[a-z]' ),
+
+     '{controller}/{action}/{id}' => array( 'id' => '[0-9]', 'controller' => '[a-z]' , 'action' => '[a-z]' )
+
+
+
+ );
