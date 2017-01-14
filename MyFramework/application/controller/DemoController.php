@@ -65,8 +65,6 @@
 
          $this -> list = $tt;
 
-         print_r( $db -> get() );
-
 
          $cache = new \System\Cache\SCache;
 
