@@ -27,6 +27,13 @@
     }
 
 
+    public function getArrayList()
+    {
+
+      return $this->jsondata;
+
+    }
+
     public function getMusic()
     {
 
@@ -59,7 +66,7 @@
 
     }
 
-    public function getFile( $id )
+    public function getFile( $id , $copy )
     {
          
          $postfield = 'act=reload_audio&al=1&album_id=-1&ids='.$this->jsondata[$id]['id1'].'_'.$this->jsondata[$id]['id'].'';
@@ -84,7 +91,11 @@
 
          $url = str_replace( '\\' , '', $res[1][2] ); $basename = basename( substr( $url , 0 , strpos( $url , '?' ) ) );
 
-         copy( $url ,  $basename );
+         if( $copy )
+         {
+            if( copy( $url ,  $basename ) ) return true; else return false;
+
+         } else { return $url; }
 
     }
 
@@ -125,5 +136,5 @@
 
   $vk->getMusic( );
 
-  $vk->getFile( 4 );
+  $vk->getFile( 4 , true );
 
