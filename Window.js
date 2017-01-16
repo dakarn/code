@@ -1,22 +1,15 @@
+function getID( id )
+{
 
+  return document.getElementById(id);
 
-
-
-
+}
 
 function getC(id)
 {
 
   var d=document.getElementsByClassName( id );
   return d[0];
-
-} 
-
-
-function getID( id )
-{
-
-  return document.getElementById(id);
 
 }
 
