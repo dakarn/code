@@ -21,7 +21,6 @@
 
   curl_setopt($c,CURLOPT_RETURNTRANSFER,1); $result=curl_exec($c); curl_close($c); 
 
-
   $result =  substr( $result , strpos( $result , "[[" ) ); 
 
   $result = substr( $result , 1 , strpos( $result , "]]" ) );
@@ -41,5 +40,3 @@
     ++$i;
 
   }
-
- 
