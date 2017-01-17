@@ -34,11 +34,13 @@
 
  }
 
- input[type="button"]:focus {
+ 
+ input[type="button"]:hover {
 
-    cursor: pointer;
-    border: thin solid black;
-    background: gray;
+    
+    border-radius: 0 5px 5px 0;
+    padding: 9px;
+    border: thin solid gray;
 
  }
 

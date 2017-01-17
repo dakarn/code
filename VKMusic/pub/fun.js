@@ -41,7 +41,7 @@ var Music = (function( )
      param: "action=requetsList&title=",
      even: function(data)
      {
-            alert(data);
+            
      }});
 
    },
