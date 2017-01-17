@@ -11,11 +11,19 @@
 
   <div id=header-content>
 
-   <h1 style="top: 30px; margin: auto; position: absolute; color: white;">Поиск MP3</h1>
+   <h1 style="top: 30px; margin: auto; position: absolute; color: white;">Поиск MP3 по всему миру!</h1>
 
   </div>
 
-  <div id=menu></div>
+  <div id=menu>
+
+    <div id=menu-items>
+
+     <div id=menu-item>О проекте</div><div id=menu-item>Что ищут другие?</div><div id=menu-item>Как пользоваться?</div>
+
+    </div>
+
+  </div>
 
  </header>
 
@@ -23,11 +31,14 @@
 
  <div id=content>
 
-  <div id=content-left>
-
-  </div>
 
   <div id=content-center>
+
+   <h2><big>Введите название композиций</big></h2>
+   
+   <input type=text placeholder="Исполнитель или композиция" size=30 name=music_name><input id=btn type=button value="Показать результаты">
+
+   <div id=content-answer></div>
 
   </div>
 
