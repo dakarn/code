@@ -127,7 +127,7 @@
 
           if( !isset($len[1]) ) $len[1] = 0; 
 
-          $this->jsondata[$i] = array("num"=>$i,"artist"=>$data[1][4],"title"=>$data[1][3],"length"=>$len[1],"id"=>$data[1][0],"id1"=>$data[1][1]);
+          $this->jsondata[$i] = array("num"=>$i,"artist"=>trim($data[1][4]),"title"=>trim($data[1][3]),"length"=>$len[1],"id"=>$data[1][0],"id1"=>$data[1][1]);
  
           ++$i;
 

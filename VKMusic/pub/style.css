@@ -17,12 +17,21 @@
 
  }
 
+ 
+ .img_fun {
+
+   float: right;
+   width: 42px;
+   padding: 2px;
+
+ }
 
  .content-answer {
 
   margin: auto;
-  width: 415px;
+  width: 475px;
   text-align: left;
+  padding-left: 70px;
 
  }
 
@@ -31,10 +40,11 @@
     border-radius: 5px 0 0 5px;
     padding: 9px;
     border: thin solid gray;
+    width: 240px;
 
  }
 
- input[type="button"] {
+ input[type="submit"] {
 
     
     border-radius: 0 5px 5px 0;
@@ -44,12 +54,9 @@
  }
 
  
- input[type="button"]:hover {
+ input[type="submit"]:hover {
 
     
-    border-radius: 0 5px 5px 0;
-    padding: 9px;
-    border: thin solid gray;
 
  }
 

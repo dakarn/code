@@ -34,9 +34,13 @@
 
   <div id=content-center>
 
-   <h2><big>Введите название композиций</big></h2>
+   <div style="font-size: 32px">Введите название композиций</div><br>
    
-   <input type=text placeholder="Исполнитель или композиция" size=30 name=music_name><input id=btn type=button value="Показать результаты">
+   <form  onSubmit = "Music.submitOK(); return false;" id=forma>
+
+    <input type=text placeholder="Исполнитель или композиция" size=30 name=music_name><input id=btn type=submit value="Показать результаты">
+
+   </form>
 
    <div id=content-answer class=content-answer></div><br><br>
 

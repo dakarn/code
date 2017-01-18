@@ -4,24 +4,9 @@ var Music = (function( )
   var offset = 0;
 
 
-  window.addEventListener('load', function()
-  { 
-    document.getElementById('btn').addEventListener('click', function()
-    {
-
-      if( Music.setOffset > 1 ){ Music.setOffset( -50 ); } else if( Music.setOffset == 0 ){ Music.setOffset( 0 ); }
-      Music.requetsList();
-
-    });
-
-  });
-
-
-  
-
-
   function setList( data )
   {
+
 
      var json = JSON.parse(data); 
 
@@ -40,7 +25,7 @@ var Music = (function( )
 
      
 
-     if( offset > 0 ){ doc.innerHTML += '<br><div style="text-align: center; width: 180px; padding: 8px; background: lightgreen; border: thin solid gray; cursor: pointer;"\
+     if( offset > 0 ){ doc.innerHTML += '<br><div style="text-align: center; width: 200px; padding: 6px; background: lightgreen; border: thin solid gray; cursor: pointer;"\
      onClick="Music.setOffset( -50 ); Music.requetsList();"><b>Показать предыдущие</b></div><br>'; }
 
 
@@ -57,13 +42,18 @@ var Music = (function( )
 
         if( name == null ){ name = "Неизвестно"; }
         if( title == null ){ title = "Неизвестно"; }
+
+        if( name.length > 24 ){ name = name.substring( 0 , 24 ); }
+        if( title.length > 27 ){ title = title.substring( 0 , 27 ); }
         
         name = name.replace( /(www|http)(.*)\.(.*){2,5}/ig , '' );    
         title = title.replace( /(www|http)(.*)\.(.*){2,5}/ig , '' );    
 
-        doc.innerHTML += '<div title="Перейти к скачиванию" onClick="Music.loadingFile('+k+')" id='+k+'\
+        doc.innerHTML += '<div id='+k+'\
         class=item-music data-id='+lists[k].id+' data-id1='+lists[k].id1+'>\
         '+name+'  -  '+title+'\
+        <div class=img_fun><img onClick="Music.loadingFile('+k+')" title="Скачать" src=pub/img/loadfile.png height=17>\
+        <img title="Воспроизвести" src=pub/img/musicplay.png height=17></div>\
         </div>';
 
         
@@ -102,6 +92,14 @@ var Music = (function( )
 
   return {
 
+
+   submitOK: function()
+   {
+
+     if( Music.setOffset > 1 ){ Music.setOffset( -50 ); } else if( Music.setOffset == 0 ){ Music.setOffset( 0 ); }
+      Music.requetsList();
+
+   },
 
    getOffset: function()
    {
