@@ -23,7 +23,7 @@ var Music = (function( )
   function setList( data )
   {
 
-     var json = JSON.parse(data);
+     var json = JSON.parse(data); 
 
      var doc = document.getElementById('content-answer'); 
 
@@ -31,6 +31,7 @@ var Music = (function( )
 
 
      if( json.success == 0 ){ doc.innerHTML = '<br><br><big>'+json.message+'</big>'; return; }
+     if( json.list == "" ){ doc.innerHTML = '<br><br><big>Ой! Что-то пошло не так!</big>'; return; }
 
 
      doc.innerHTML = '<br><br><big>Всего найдено '+json.count+' MP3 <b>|</b> Показаны '+(offset+50)+'</big><br><br>';

@@ -8,7 +8,7 @@
 
    $vk = new VKload( $_POST['title'] );
 
-   $js = $vk->getMusic( );
+   $js = $vk->getMusic( abs( intval( $_POST['offset'] ) ) );
 
    $json = json_encode( $js );
 

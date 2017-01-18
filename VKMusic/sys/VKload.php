@@ -35,7 +35,7 @@
 
     }
 
-    public function getMusic()
+    public function getMusic( $offset )
     {
 
        $i = 0;
@@ -43,8 +43,6 @@
        $this->result = '';
 
        $this->jsondata = '';
-
-       $offset = abs( intval( $_POST['offset'] ) );
 
 
        $postfield = 'act=a_load_section&al=1&album_id=-1&claim=0&offset='.$offset.'&owner_id=113537351&search_history=0&search_lyrics=0&search_performer=0&search_q='.urldecode($this->name).'&search_sort=0&type=search';
@@ -114,16 +112,20 @@
 
          $this->result = substr( $this->result , 1 , strpos( $this->result , "]]" ) );
 
+
          preg_match_all( '/\[(.*)"\]/isU' , $this->result , $res );
 
          $this->count = count( $res[1] );
 
+         
 
          while ( $i < $this->count )
          {
 
           preg_match_all( '/"(.*)"/isU' , $res[1][$i] , $data );  
-          preg_match( '/,([0-9]{1,3}),/i' , $res[1][$i] , $len ); 
+          preg_match( '/,([0-9]{1,3}),/i' , $res[1][$i] , $len );
+
+          if( !isset($len[1]) ) $len[1] = 0; 
 
           $this->jsondata[$i] = array("num"=>$i,"artist"=>$data[1][4],"title"=>$data[1][3],"length"=>$len[1],"id"=>$data[1][0],"id1"=>$data[1][1]);
  
