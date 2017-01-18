@@ -4,6 +4,7 @@
 
 
      private $count = 0;
+     private $countList = 0;
      private $result = '';
      private $name = '';
      private $id = '';
@@ -22,7 +23,7 @@
     public function getCount()
     {
 
-     return $this->count;
+     return $this->countList;
 
     }
 
@@ -106,6 +107,9 @@
 
          $i = 0;
 
+         preg_match( '/"totalCount":(.*){1,8},/isU' , $this->result , $this->countList );
+
+      
          $this->result =  substr( $this->result , strpos( $this->result , "[[" ) ); 
 
          $this->result = substr( $this->result , 1 , strpos( $this->result , "]]" ) );
@@ -113,6 +117,7 @@
          preg_match_all( '/\[(.*)"\]/isU' , $this->result , $res );
 
          $this->count = count( $res[1] );
+
 
          while ( $i < $this->count )
          {

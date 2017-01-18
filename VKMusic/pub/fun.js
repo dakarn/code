@@ -9,7 +9,7 @@ var Music = (function( )
     document.getElementById('btn').addEventListener('click', function()
     {
 
-      Music.setOffset( -50 );
+      if( Music.setOffset > 1 ){ Music.setOffset( -50 ); } else if( Music.setOffset == 0 ){ Music.setOffset( 0 ); }
       Music.requetsList();
 
     });
@@ -23,11 +23,24 @@ var Music = (function( )
   function setList( data )
   {
 
-     var json = JSON.parse(data); var lists = json.list;
+     var json = JSON.parse(data);
 
      var doc = document.getElementById('content-answer'); 
 
      doc.innerHTML = '<br>';
+
+
+     if( json.success == 0 ){ doc.innerHTML = '<br><br><big>'+json.message+'</big>'; return; }
+
+
+     doc.innerHTML = '<br><br><big>Всего найдено '+json.count+' MP3 <b>|</b> Показаны '+(offset+50)+'</big><br><br>';
+
+     var lists = json.list;
+
+     
+
+     if( offset > 0 ){ doc.innerHTML += '<br><div style="text-align: center; width: 180px; padding: 8px; background: lightgreen; border: thin solid gray; cursor: pointer;"\
+     onClick="Music.setOffset( -50 ); Music.requetsList();"><b>Показать предыдущие</b></div><br>'; }
 
 
      for( var k in lists )
@@ -44,7 +57,8 @@ var Music = (function( )
         if( name == null ){ name = "Неизвестно"; }
         if( title == null ){ title = "Неизвестно"; }
         
-
+        name = name.replace( /(www|http)(.*)\.(.*){2,5}/ig , '' );    
+        title = title.replace( /(www|http)(.*)\.(.*){2,5}/ig , '' );    
 
         doc.innerHTML += '<div title="Перейти к скачиванию" onClick="Music.loadingFile('+k+')" id='+k+'\
         class=item-music data-id='+lists[k].id+' data-id1='+lists[k].id1+'>\
@@ -56,8 +70,13 @@ var Music = (function( )
      }
 
 
-     doc.innerHTML += '<br><div style="width: 150px; padding: 8px; background: lightgreen; border: thin solid black; cursor: pointer;"\
-     onClick="Music.setOffset( 50 ); Music.requetsList();"><b>Показать ещё</b></div>';
+     if( json.count > 100 + offset && json.list != "" )
+     {
+
+      doc.innerHTML += '<br><div style="text-align: center; width: 170px; padding: 8px; background: lightgreen; border: thin solid gray; cursor: pointer;"\
+      onClick="Music.setOffset( 50 ); Music.requetsList();"><b>Показать ещё</b></div>';
+
+     }
     
   }
 
