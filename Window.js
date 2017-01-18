@@ -5,6 +5,10 @@ function getID( id )
 
 }
 
+
+
+
+
 function getC(id)
 {
 
@@ -60,7 +64,7 @@ var Window = (function()
 
     var text = '<table><tr><td style="width:300px;padding-left:8px;"><big><font color=black>'+title+'</font></big></td>\
     <td align=right width='+options.w+'>\
-    <img title="Çàêðûòü" class=img_close src="http://5.19.253.227/musicjs/public/img/win-close.png"\
+    <img title="Ã‡Ã ÃªÃ°Ã»Ã²Ã¼" class=img_close src="http://5.19.253.227/musicjs/public/img/win-close.png"\
     onClick="Window.close();"></td></tr></table>';
 
 
