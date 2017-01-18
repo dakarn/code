@@ -43,7 +43,10 @@
 
        $this->jsondata = '';
 
-       $postfield = 'act=a_load_section&al=1&album_id=1629317882&claim=0&offset=0&owner_id=113537351&search_history=0&search_lyrics=0&search_performer=0&search_q='.$this->name.'&search_sort=0&type=search';
+       $offset = abs( intval( $_POST['offset'] ) );
+
+
+       $postfield = 'act=a_load_section&al=1&album_id=-1&claim=0&offset='.$offset.'&owner_id=113537351&search_history=0&search_lyrics=0&search_performer=0&search_q='.urldecode($this->name).'&search_sort=0&type=search';
 
        $c = curl_init('https://vk.com/al_audio.php'); 
 
@@ -53,7 +56,7 @@
 
        curl_setopt ($c, CURLOPT_SSL_VERIFYPEER, 0); curl_setopt ($c, CURLOPT_SSL_VERIFYHOST, 2);
 
-       curl_setopt($c,CURLOPT_POSTFIELDS, $postfield ); curl_setopt($c,CURLOPT_COOKIE, file_get_contents('file/user-session.dat') );
+       curl_setopt($c,CURLOPT_POSTFIELDS, $postfield ); curl_setopt($c,CURLOPT_COOKIE, file_get_contents('../sys/user-session.dat') );
 
        curl_setopt($c,CURLOPT_HTTPHEADER,array('X-Requested-With'=>'XMLHttpRequest','Connection'=>'Keep-Alive','Accept-Encoding'=>'gzip, deflate')); 
 
@@ -66,10 +69,10 @@
 
     }
 
-    public function getFile( $id , $copy )
+    public function getFile( $id , $id1 )
     {
          
-         $postfield = 'act=reload_audio&al=1&album_id=-1&ids='.$this->jsondata[$id]['id1'].'_'.$this->jsondata[$id]['id'].'';
+         $postfield = 'act=reload_audio&al=1&album_id=-1&ids='.$id1.'_'.$id.'';
 
          $c = curl_init('https://vk.com/al_audio.php'); 
 
@@ -79,7 +82,7 @@
 
          curl_setopt($c,CURLOPT_REFERER,"https://vk.com/audios113537351?q=scooter");
 
-         curl_setopt($c,CURLOPT_POSTFIELDS, $postfield ); curl_setopt($c,CURLOPT_COOKIE, file_get_contents('file/user-session.dat') );
+         curl_setopt($c,CURLOPT_POSTFIELDS, $postfield ); curl_setopt($c,CURLOPT_COOKIE, file_get_contents('../sys/user-session.dat') );
 
          curl_setopt($c,CURLOPT_HTTPHEADER,array('X-Requested-With'=>'XMLHttpRequest')); curl_setopt($c,CURLOPT_RETURNTRANSFER,1); $result=curl_exec($c); curl_close($c);
 
@@ -91,11 +94,9 @@
 
          $url = str_replace( '\\' , '', $res[1][2] ); $basename = basename( substr( $url , 0 , strpos( $url , '?' ) ) );
 
-         if( $copy )
-         {
-            if( copy( $url ,  $basename ) ) return true; else return false;
+         copy( $url ,  'mp3/'.$basename );
 
-         } else { return $url; }
+         return 'mp3/'.$basename;
 
     }
 
@@ -119,7 +120,7 @@
           preg_match_all( '/"(.*)"/isU' , $res[1][$i] , $data );  
           preg_match( '/,([0-9]{1,3}),/i' , $res[1][$i] , $len ); 
 
-          $this->jsondata[$i] = array("num"=>$i,"artist"=>$data[1][4],"track"=>$data[1][3],"length"=>$len[1],"id"=>$data[1][0],"id1"=>$data[1][1]);
+          $this->jsondata[$i] = array("num"=>$i,"artist"=>$data[1][4],"title"=>$data[1][3],"length"=>$len[1],"id"=>$data[1][0],"id1"=>$data[1][1]);
  
           ++$i;
 
@@ -132,9 +133,5 @@
   }
 
 
-  $vk = new VKload( 'Scooter fire' );
-
-  $vk->getMusic( );
-
-  $vk->getFile( 4 , true );
+  
 

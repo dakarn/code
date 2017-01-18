@@ -17,6 +17,15 @@
 
  }
 
+
+ .content-answer {
+
+  margin: auto;
+  width: 415px;
+  text-align: left;
+
+ }
+
  input[type="text"] {
 
     border-radius: 5px 0 0 5px;
@@ -41,6 +50,22 @@
     border-radius: 0 5px 5px 0;
     padding: 9px;
     border: thin solid gray;
+
+ }
+
+ 
+ .item-music {
+
+   padding: 9px;
+   white-space: pre-line;
+
+ }
+
+
+ .item-music:hover {
+
+   cursor: pointer;
+   background: silver;
 
  }
 
@@ -92,25 +117,16 @@
    border-left: thin solid black;
 
  }
+
+
  
-
- #content-left {
-
-  border-radius: 4px 4px 4px 4px;
-  display: inline-block; 
-  width: 190px;
-  height: 900px;
-  border: thin solid gray;
-
- }
-
 
  #content-center {
 
   text-align: center;
   border-radius: 4px 4px 4px 4px;
   width: 960px;
-  height: 614px;
+  min-height: 614px;
   border: thin solid gray;
   background: snow;
 
