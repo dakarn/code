@@ -1,0 +1,5 @@
+<?
+
+
+ $password = 'xxxxx';
+ $login = 'sssssss';
