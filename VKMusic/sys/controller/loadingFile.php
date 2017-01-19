@@ -15,7 +15,10 @@
 
    $url = $vk->getFile( $id , $id1 );
 
-   $success = '{"success": 1,"url": "http://localhost/git/VKMusic/pub/'.$url.'"}';
+   $size = filesize( $url );
+
+
+   $success = '{"success": 1, "size": '.$size.', "url": "http://5.19.253.227/git/VKMusic/pub/'.$url.'"}';
 
    echo $success;
 

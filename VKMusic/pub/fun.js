@@ -4,6 +4,7 @@ var Music = (function( )
   var offset = 0;
 
 
+
   function setList( data )
   {
 
@@ -34,7 +35,6 @@ var Music = (function( )
 
 
         var title = lists[k].title;
-
         var name = lists[k].artist;
 
 
@@ -44,18 +44,19 @@ var Music = (function( )
         if( title == null ){ title = "Неизвестно"; }
 
         if( name.length > 24 ){ name = name.substring( 0 , 24 ); }
-        if( title.length > 27 ){ title = title.substring( 0 , 27 ); }
+        if( title.length > 24 ){ title = title.substring( 0 , 24 ); }
+
+        if( name+title.length > 48 ){ name = name.substring( 0 , 20 ); title = title.substring( 0 , 20 ); }
         
         name = name.replace( /(www|http)(.*)\.(.*){2,5}/ig , '' );    
         title = title.replace( /(www|http)(.*)\.(.*){2,5}/ig , '' );    
 
         doc.innerHTML += '<div id='+k+'\
-        class=item-music data-id='+lists[k].id+' data-id1='+lists[k].id1+'>\
+        class=item-music data-id='+lists[k].id+' data-duration="'+lists[k].length+'" data-id1='+lists[k].id1+'>\
         '+name+'  -  '+title+'\
-        <div class=img_fun><img onClick="Music.loadingFile('+k+')" title="Скачать" src=pub/img/loadfile.png height=17>\
+        <div class=img_fun><img onClick="Music.loadingFile('+k+', Music.refreshLoad)" title="Скачать" src=pub/img/loadfile.png height=17>\
         <img title="Воспроизвести" src=pub/img/musicplay.png height=17></div>\
         </div>';
-
         
 
      }
@@ -72,7 +73,6 @@ var Music = (function( )
   }
 
 
-
   function SendAjax( js )
   {
 
@@ -82,7 +82,7 @@ var Music = (function( )
        if ( req.readyState == 4 ){ js.even(req.responseText); }
     }
 
-    req.open( 'POST' , js.path, true );
+    req.open( 'POST' , js.path, js.async );
     req.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
     req.send( js.param );
 
@@ -91,6 +91,16 @@ var Music = (function( )
 
 
   return {
+
+
+   refreshLoad: function( data )
+   {
+
+     var json = JSON.parse( data ); 
+          
+     if( json.success ){ open( json.url); }
+
+   },
 
 
    submitOK: function()
@@ -115,10 +125,11 @@ var Music = (function( )
 
    },
 
+
    requetsList: function()
    {
      
-     var title = encodeURIComponent( document.getElementsByName( 'music_name' )[0].value );
+     var title = document.getElementsByName( 'music_name' )[0].value;
 
      if( title == "" ){ document.getElementById('content-answer').innerHTML = '<br><br><big>Вы не заполнили поле с названием!</big>'; return; }
 
@@ -126,6 +137,7 @@ var Music = (function( )
      Идет загрузка...';
 
      SendAjax({ 
+     async: true,
      path: "pub/ajax.php",
      param: "action=requestList&title="+title+"&offset="+Music.getOffset()+"",
      even: function(data)
@@ -139,7 +151,7 @@ var Music = (function( )
 
 
    
-   loadingFile: function( id )
+   loadingFile: function( id , callbacks )
    {
 
       var id1 = document.getElementById( id ).getAttribute( 'data-id' );
@@ -147,13 +159,14 @@ var Music = (function( )
 
 
       SendAjax({ 
+      async: true,
       path: "pub/ajax.php",
       param: "action=loadingFile&id="+id1+"&id1="+id2,
       even: function(data)
       {
-           var json = JSON.parse( data ); 
-          
-           if( json.success ){ location.href = json.url; }
+
+        callbacks( data );
+           
       }});
 
    }

@@ -45,7 +45,7 @@
        $this->jsondata = '';
 
 
-       $postfield = 'act=a_load_section&al=1&album_id=-1&claim=0&offset='.$offset.'&owner_id=113537351&search_history=0&search_lyrics=0&search_performer=0&search_q='.urldecode($this->name).'&search_sort=0&type=search';
+       $postfield = 'act=a_load_section&al=1&album_id=-1&claim=0&offset='.$offset.'&owner_id=113537351&search_history=0&search_lyrics=0&search_performer=0&search_q='.$this->name.'&search_sort=0&type=search';
 
        $c = curl_init('https://vk.com/al_audio.php'); 
 
@@ -93,7 +93,8 @@
 
          $url = str_replace( '\\' , '', $res[1][2] ); $basename = basename( substr( $url , 0 , strpos( $url , '?' ) ) );
 
-         copy( $url ,  'mp3/'.$basename );
+         if( !file_exists( 'mp3/'.$basename ) ){ copy( $url ,  'mp3/'.$basename ); }
+
 
          return 'mp3/'.$basename;
 
