@@ -2,8 +2,21 @@ var Music = (function( )
 {
 
   var offset = 0;
+  var oldplay = -1;
 
+ 
+  function parseDuration( len )
+  {
 
+    var dur = [];
+
+    dur.push( Math.floor( parseInt(len)/60) );   
+    dur.push( Math.floor( parseInt(len)%60) ); 
+
+    return dur;
+    
+
+  }
 
   function setList( data )
   {
@@ -26,8 +39,13 @@ var Music = (function( )
 
      
 
-     if( offset > 0 ){ doc.innerHTML += '<br><div style="text-align: center; width: 200px; padding: 6px; background: lightgreen; border: thin solid gray; cursor: pointer;"\
-     onClick="Music.setOffset( -50 ); Music.requetsList();"><b>Показать предыдущие</b></div><br>'; }
+     if( offset > 0 )
+     { 
+
+       doc.innerHTML += '<br><div style="text-align: center; width: 200px; padding: 6px; background: lightgreen; border: thin solid gray; cursor: pointer;"\
+       onClick="Music.setOffset( -50 ); Music.requetsList();"><b>Показать предыдущие</b></div><br>'; 
+
+     }
 
 
      for( var k in lists )
@@ -46,16 +64,16 @@ var Music = (function( )
         if( name.length > 24 ){ name = name.substring( 0 , 24 ); }
         if( title.length > 24 ){ title = title.substring( 0 , 24 ); }
 
-        if( name+title.length > 48 ){ name = name.substring( 0 , 20 ); title = title.substring( 0 , 20 ); }
+        if( name+title.length > 40 ){ name = name.substring( 0 , 20 ); title = title.substring( 0 , 20 ); }
         
-        name = name.replace( /(www|http)(.*)\.(.*){2,5}/ig , '' );    
-        title = title.replace( /(www|http)(.*)\.(.*){2,5}/ig , '' );    
+        var dur = parseDuration( lists[k].length );
 
         doc.innerHTML += '<div id='+k+'\
         class=item-music data-id='+lists[k].id+' data-duration="'+lists[k].length+'" data-id1='+lists[k].id1+'>\
         '+name+'  -  '+title+'\
-        <div class=img_fun><img onClick="Music.loadingFile('+k+', Music.refreshLoad)" title="Скачать" src=pub/img/loadfile.png height=17>\
-        <img title="Воспроизвести" src=pub/img/musicplay.png height=17></div>\
+        <div class=img_fun>\ <div class=duration><small> '+dur[0]+':'+dur[1]+' </small></div>\
+        <img onClick = "Music.loadingFile('+k+', Music.refreshLoad)" title="Скачать" src=pub/img/loadfile.png height=17>\
+        <img id=goimg'+k+' onClick = "Music.loadingFile('+k+', Music.player)" title="Воспроизвести" src=pub/img/musicplay.png height=17></div>\
         </div>';
         
 
@@ -92,8 +110,54 @@ var Music = (function( )
 
   return {
 
+ 
+   player: function( data , id )
+   {
 
-   refreshLoad: function( data )
+
+      var json = JSON.parse( data ); 
+          
+      if( !json.success ) return;
+
+
+      if( document.getElementById( oldplay+'playmp3' ) ){ document.getElementById( oldplay+'playmp3' ).pause(); }
+
+
+      if( !document.getElementById( id+'playmp3' ) )
+      {
+
+        document.getElementById(id).innerHTML += '<div id='+id+'audio><audio data-stop=true style="border: thin solid silver;" controls id='+id+'playmp3 src='+json.url+'></audio></div>';
+        document.getElementById( id+'playmp3' ).play();
+
+        document.getElementById( id+'playmp3' ).onplay = function()
+        {
+
+          if( document.getElementById( oldplay+'playmp3' ) && oldplay != id )
+          {
+            document.getElementById( oldplay+'playmp3' ).pause(); 
+
+          }
+
+          oldplay = id;
+
+        };
+
+
+        document.getElementById( id+'playmp3' ).onpause = function()
+        {
+
+
+        };
+
+        document.getElementById( 'goimg'+id )['onclick'] = null;
+
+      }
+
+
+   },
+
+
+   refreshLoad: function( data , id )
    {
 
      var json = JSON.parse( data ); 
@@ -107,9 +171,21 @@ var Music = (function( )
    {
 
      if( Music.setOffset > 1 ){ Music.setOffset( -50 ); } else if( Music.setOffset == 0 ){ Music.setOffset( 0 ); }
-      Music.requetsList();
+
+
+     var title = document.getElementsByName( 'music_name' )[0].value;
+
+     if( title == "" )
+     {
+        document.getElementById('content-answer').innerHTML = '<br><br><big>Вы не заполнили поле с названием!</big>'; return;
+     }
+
+
+     History.add( title );
+     Music.requetsList();
 
    },
+
 
    getOffset: function()
    {
@@ -117,6 +193,7 @@ var Music = (function( )
      return offset;
 
    },
+
 
    setOffset: function( offsets )
    {
@@ -129,23 +206,24 @@ var Music = (function( )
    requetsList: function()
    {
      
-     var title = document.getElementsByName( 'music_name' )[0].value;
 
-     if( title == "" ){ document.getElementById('content-answer').innerHTML = '<br><br><big>Вы не заполнили поле с названием!</big>'; return; }
+     var title = document.getElementsByName( 'music_name' )[0].value;
 
      document.getElementById('content-answer').innerHTML = '<br><br><img src="pub/img/loader.gif"><br>\
      Идет загрузка...';
 
+
      SendAjax({ 
-     async: true,
-     path: "pub/ajax.php",
-     param: "action=requestList&title="+title+"&offset="+Music.getOffset()+"",
-     even: function(data)
-     {
+      async: true,
+      path: "pub/ajax.php",
+      param: "action=requestList&title="+title+"&offset="+Music.getOffset()+"",
+      even: function(data)
+      {
 
             setList( data );
 
-     }});
+      } 
+     });
 
    },
 
@@ -159,15 +237,16 @@ var Music = (function( )
 
 
       SendAjax({ 
-      async: true,
-      path: "pub/ajax.php",
-      param: "action=loadingFile&id="+id1+"&id1="+id2,
-      even: function(data)
-      {
+       async: true,
+       path: "pub/ajax.php",
+       param: "action=loadingFile&id="+id1+"&id1="+id2,
+       even: function(data)
+       {
 
-        callbacks( data );
+        callbacks( data , id );
            
-      }});
+       }
+      });
 
    }
 

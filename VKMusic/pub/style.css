@@ -17,12 +17,21 @@
 
  }
 
+
+ .duration {
+
+   float: left;
+   color: gray;
+   margin-right: 5px;
+
+ }
+
  
  .img_fun {
 
    float: right;
-   width: 42px;
-   padding: 2px;
+   width: 72px;
+   padding: 5px;
 
  }
 
@@ -32,6 +41,15 @@
   width: 475px;
   text-align: left;
   padding-left: 70px;
+
+ }
+
+ #history-search {
+
+   margin-left: 35px;
+   padding: 10px;
+   text-align: left;
+
 
  }
 
@@ -50,16 +68,22 @@
     border-radius: 0 5px 5px 0;
     padding: 9px;
     border: thin solid gray;
+    border-left: none;
 
  }
 
  
  input[type="submit"]:hover {
 
-    
+    cursor: pointer;
 
  }
 
+ input[type="submit"]:focus {
+
+    border: thin solid black;
+
+ }
  
  .item-music {
 
@@ -126,14 +150,34 @@
  }
 
 
+ #content-left {
+
+  box-shadow: 0 0 4 4px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0 0 40px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3);
+  text-align: center;
+  border-radius: 4px 4px 4px 4px;
+  width: 250px;
+  min-height: 374px;
+  border: thin solid gray;
+  background: snow;
+  display: inline-block;
+  float: left;
+
+ }
  
 
  #content-center {
 
+  margin-left: 25px;
+  display: inline-block;
+  box-shadow: 0 0 4 4px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0 0 40px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 0 40px rgba(0,0,0,0.3);
   text-align: center;
   border-radius: 4px 4px 4px 4px;
-  width: 960px;
-  min-height: 614px;
+  width: 660px;
+  min-height: 514px;
   border: thin solid gray;
   background: snow;
 
@@ -169,8 +213,8 @@
 
  #content {
   
-  width: 960px;
   align: center;
+  width: 960px;
   margin: auto;
 
  }
