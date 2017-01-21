@@ -3,8 +3,29 @@ var Music = (function( )
 
   var offset = 0;
   var oldplay = -1;
+  var lenresize = 24;
+
+  if( navigator.userAgent.search( 'Android' ) != -1 || navigator.userAgent.search( 'Linux' ) != -1 ){ lenresize = 15; }
 
  
+  function checkName( name , title )
+  {
+
+
+     if( name == null ){ name = "Неизвестно"; }
+     if( title == null ){ title = "Неизвестно"; }
+
+     if( name.length > lenresize ){ name = name.substring( 0 , lenresize ); }
+     if( title.length > lenresize ){ title = title.substring( 0 , lenresize ); }
+
+     if( name+title.length > 40 ){ name = name.substring( 0 , 15 ); title = title.substring( 0 , 15 ); }
+
+     return [ name , title ];
+
+
+  }
+
+
   function parseDuration( len )
   {
 
@@ -12,6 +33,8 @@ var Music = (function( )
 
     dur.push( Math.floor( parseInt(len)/60) );   
     dur.push( Math.floor( parseInt(len)%60) ); 
+
+    if( dur[1] < 10 ) dur[1] = '0'+dur[1];
 
     return dur;
     
@@ -42,7 +65,7 @@ var Music = (function( )
      if( offset > 0 )
      { 
 
-       doc.innerHTML += '<br><div style="text-align: center; width: 200px; padding: 6px; background: lightgreen; border: thin solid gray; cursor: pointer;"\
+       doc.innerHTML += '<br><div class=btn-next\
        onClick="Music.setOffset( -50 ); Music.requetsList();"><b>Показать предыдущие</b></div><br>'; 
 
      }
@@ -55,22 +78,17 @@ var Music = (function( )
         var title = lists[k].title;
         var name = lists[k].artist;
 
-
         if( name == null && title == null ) continue;
 
-        if( name == null ){ name = "Неизвестно"; }
-        if( title == null ){ title = "Неизвестно"; }
 
-        if( name.length > 24 ){ name = name.substring( 0 , 24 ); }
-        if( title.length > 24 ){ title = title.substring( 0 , 24 ); }
-
-        if( name+title.length > 40 ){ name = name.substring( 0 , 20 ); title = title.substring( 0 , 20 ); }
+        var resName = checkName( name , title );
         
         var dur = parseDuration( lists[k].length );
 
+
         doc.innerHTML += '<div id='+k+'\
         class=item-music data-id='+lists[k].id+' data-duration="'+lists[k].length+'" data-id1='+lists[k].id1+'>\
-        '+name+'  -  '+title+'\
+        '+resName[0]+'  -  '+resName[1]+'\
         <div class=img_fun>\ <div class=duration><small> '+dur[0]+':'+dur[1]+' </small></div>\
         <img onClick = "Music.loadingFile('+k+', Music.refreshLoad)" title="Скачать" src=pub/img/loadfile.png height=17>\
         <img id=goimg'+k+' onClick = "Music.loadingFile('+k+', Music.player)" title="Воспроизвести" src=pub/img/musicplay.png height=17></div>\
@@ -83,7 +101,7 @@ var Music = (function( )
      if( json.count > 100 + offset && json.list != "" )
      {
 
-      doc.innerHTML += '<br><div style="text-align: center; width: 170px; padding: 8px; background: lightgreen; border: thin solid gray; cursor: pointer;"\
+      doc.innerHTML += '<br><div class=btn-next\
       onClick="Music.setOffset( 50 ); Music.requetsList();"><b>Показать ещё</b></div>';
 
      }
@@ -126,8 +144,10 @@ var Music = (function( )
       if( !document.getElementById( id+'playmp3' ) )
       {
 
-        document.getElementById(id).innerHTML += '<div id='+id+'audio><audio data-stop=true style="border: thin solid silver;" controls id='+id+'playmp3 src='+json.url+'></audio></div>';
-        document.getElementById( id+'playmp3' ).play();
+        document.getElementById(id).innerHTML += '<div id='+id+'audio>\
+        <audio autoplay data-stop=true style="border: thin solid silver;" controls id='+id+'playmp3 src='+json.url+'></audio></div>';
+
+        
 
         document.getElementById( id+'playmp3' ).onplay = function()
         {
@@ -143,9 +163,17 @@ var Music = (function( )
         };
 
 
-        document.getElementById( id+'playmp3' ).onpause = function()
+        document.getElementById( id+'playmp3' ).onended = function()
         {
 
+          document.getElementById( id+'playmp3' ).play();
+
+        };
+
+        document.getElementById( id+'playmp3' ).oncanplay = function()
+        {
+
+          document.getElementById( id+'playmp3' ).play();
 
         };
 
@@ -170,7 +198,7 @@ var Music = (function( )
    submitOK: function()
    {
 
-     if( Music.setOffset > 1 ){ Music.setOffset( -50 ); } else if( Music.setOffset == 0 ){ Music.setOffset( 0 ); }
+     if( Music.getOffset() > 11 ){ Music.setOffset( -50 ); } else if( Music.getOffset() == 0 ){ Music.setOffset( 0 ); }
 
 
      var title = document.getElementsByName( 'music_name' )[0].value;
@@ -181,7 +209,7 @@ var Music = (function( )
      }
 
 
-     History.add( title );
+     History.add(title);
      Music.requetsList();
 
    },
@@ -237,7 +265,7 @@ var Music = (function( )
 
 
       SendAjax({ 
-       async: true,
+       async: false,
        path: "pub/ajax.php",
        param: "action=loadingFile&id="+id1+"&id1="+id2,
        even: function(data)

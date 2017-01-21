@@ -1,0 +1,27 @@
+ .item-history {
+
+   padding: 6px;
+   white-space: pre-line;
+   font-size: 18px;
+
+ }
+
+
+ .item-history:hover {
+
+   cursor: pointer;
+   background: silver;
+   border-radius: 4px 4px 4px 4px;
+
+ }
+
+
+ #history-search {
+
+   margin-left: 30px;
+   padding: 10px;
+   text-align: left;
+   
+
+
+ }

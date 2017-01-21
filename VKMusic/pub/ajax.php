@@ -2,25 +2,45 @@
 
   $action = $_POST['action'];
 
-  if( file_exists( '../sys/controller/'.$action.'.php' ) )
+  try
   {
 
+    if( file_exists( '../sys/controller/'.$action.'.php' ) )
+    {
 
-     include('../sys/controller/'.$action.'.php');
+
+       include('../sys/controller/'.$action.'.php');
 
 
-     if( function_exists( $action ) )
-     {
+       if( function_exists( $action ) )
+       {
 
-        $action();       
+         $action(); 
+      
+
+       } else {
+
+
+         throw new Exception( '{ "success": 0 , "message": "Not found action!" }' );
+
+       }
+
+
+     } else {
+
+       throw new Exception( '{ "success": 0 , "message": "Access Denied!" }' );
 
      }
 
 
-  } else {
+  } catch( Exception $e ){
+
+     echo $e->getMessage();
+
+  }
 
 
-     echo '{ "success": 0 , "message": "Access Denied!"}';
+     
 
 
- }
+ 
