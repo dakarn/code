@@ -3,12 +3,17 @@
  function requestList( )
  {
 
+
    include( '../sys/VKload.php' );
+
+
+   $offset = abs( intval( $_POST['offset'] ) );
 
 
    $vk = new VKload( $_POST['title'] );
 
-   $js = $vk->getMusic( abs( intval( $_POST['offset'] ) ) );
+   $js = $vk->getMusic( $offset );
+
 
    $json = json_encode( $js );
 

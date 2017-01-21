@@ -10,6 +10,14 @@
  }
 
 
+ a {
+
+   text-decoration: none;
+   color: #342828;
+
+ }
+
+
  .btn-next {
 
    text-align: center;
@@ -128,7 +136,7 @@
  #menu-items {
   
   margin: auto;
-  width: 590px;
+  width: 700px;
   height: 39px;
   
  }

@@ -15,6 +15,7 @@ class MP3ID3 {
  private $sizetag = 0 ;
  private $sizeframe = 0;
 
+
  private $genre_arr = array( "Blues","Classic Rock","Country","Dance","Disco","Funk","Grunge", 
  "Hip-Hop","Jazz","Metal","New Age","Oldies","Other","Pop", 
  "R&B","Rap","Reggae","Rock","Techno","Industrial","Alternative", 

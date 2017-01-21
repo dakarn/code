@@ -10,6 +10,7 @@
      private $id = '';
      private $id1 = '';
      private $jsondata = [];
+     private $useragent = 'Opera/9.80 (Windows NT 6.1; WOW64) Presto/2.12.388 Version/12.16';
       
 
     function __construct( $name )
@@ -49,7 +50,7 @@
 
        $c = curl_init('https://vk.com/al_audio.php'); 
 
-       curl_setopt($c,CURLOPT_USERAGENT,"Opera/9.80 (Windows NT 6.1; WOW64) Presto/2.12.388 Version/12.16"); curl_setopt($c,CURLOPT_POST,true);
+       curl_setopt($c,CURLOPT_USERAGENT, $this->useragent ); curl_setopt($c,CURLOPT_POST,true);
 
        curl_setopt($c,CURLOPT_REFERER,"https://vk.com/audios113537351?q=scooter");
 
@@ -75,7 +76,7 @@
 
          $c = curl_init('https://vk.com/al_audio.php'); 
 
-         curl_setopt($c,CURLOPT_USERAGENT,"Opera/9.80 (Windows NT 6.1; WOW64) Presto/2.12.388 Version/12.16"); curl_setopt($c,CURLOPT_POST,true);
+         curl_setopt($c,CURLOPT_USERAGENT, $this->useragent ); curl_setopt($c,CURLOPT_POST,true);
 
          curl_setopt ($c, CURLOPT_SSL_VERIFYPEER, 0); curl_setopt ($c, CURLOPT_SSL_VERIFYHOST, 2);
 

@@ -1,18 +1,21 @@
 <!DOCTYPE html><html><head><meta http-equiv="Content-Type" CONTENT="text/html">
 <meta http-equiv="Cache-Control" content="no-cache">
-<script type="text/javascript" src="http://player.longtailvideo.com/jwplayer.js"></script>
 <script type="text/javascript" language="javascript" src="pub/fun.js?<?echo time()?>"></script>
+<script type="text/javascript" language="javascript" src="pub/history.js?<?echo time()?>"></script>
 <title>MP3 Search</title>
 <meta name="description" content="MP3 Search">
 <meta name="keywords" content=key>
 <link rel="stylesheet" type="text/css" href="pub/style.css?<?echo time()?>"/>
+<link rel="stylesheet" type="text/css" href="pub/history.css?<?echo time()?>"/>
 </head><body>
 
  <header>
 
   <div id=header-content>
 
-   <h1 style="top: 30px; margin: auto; position: absolute; color: white;">Поиск MP3 по всему миру!</h1>
+   <img style="margin-top: 4px;" src="pub/img/headpic.png" width=90 height=90>
+
+   <h1 style="margin: auto; position: absolute; margin-left: 100px; top: 30px; color: #27212A;">Поиск MP3 по всему миру!</h1>
 
   </div>
 
@@ -20,7 +23,10 @@
 
     <div id=menu-items>
 
-     <div id=menu-item>О проекте</div><div id=menu-item>Что ищут другие?</div><div id=menu-item>Как пользоваться?</div>
+     <a href="about.html"><div id=menu-item>О проекте</div></a>
+     <a href="other-search.html"><div id=menu-item>Что ищут другие?</div></a>
+     <a href="like.html"><div id=menu-item>Как пользоваться?</div></a>
+     <a href=""><div id=menu-item>Главная</div></a>
 
     </div>
 
@@ -32,18 +38,24 @@
 
  <div id=content>
 
+  <div id=content-left>
 
-  <div id=content-center>
+   <div style="font-size: 24px">История поиска</div><br><br>
+
+   <div id=history-search>История поиска пуста!</div><br>
+ 
+  </div><div id=content-center>
 
    <div style="font-size: 32px">Введите название композиций</div><br>
    
-   <form  onSubmit = "Music.submitOK(); return false;" id=forma>
+   <form onSubmit = "Music.submitOK(); return false;" id=forma>
 
     <input type=text placeholder="Исполнитель или композиция" size=30 name=music_name><input id=btn type=submit value="Показать результаты">
 
    </form>
 
-   <div id=content-answer class=content-answer></div><br><br>
+   <div id=content-answer class=content-answer></div>
+   <br><br>
 
   </div>
 

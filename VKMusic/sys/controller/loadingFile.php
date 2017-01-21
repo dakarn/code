@@ -10,7 +10,8 @@
    $vk = new VKload( '' );
 
    
-   $id = intval($_POST['id']); $id1 = intval($_POST['id1']); 
+   $id = intval($_POST['id']); 
+   $id1 = intval($_POST['id1']); 
   
 
    $url = $vk->getFile( $id , $id1 );
