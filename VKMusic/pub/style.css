@@ -133,6 +133,7 @@
 
  }
 
+
  #menu-items {
   
   margin: auto;
@@ -141,6 +142,13 @@
   
  }
 
+
+ #menu-center {
+
+   padding-left: 50px;
+   width: 700px;
+
+ }
 
  #menu-item {
    
@@ -161,6 +169,7 @@
 
  #menu-item:hover {
   
+   border-radius: 6px 6px 6px 6px;
    background: white;
 
  }
