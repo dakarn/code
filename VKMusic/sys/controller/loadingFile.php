@@ -19,7 +19,7 @@
    $size = filesize( $url );
 
 
-   $success = '{"success": 1, "size": '.$size.', "url": "http://5.19.253.227/git/VKMusic/pub/'.$url.'"}';
+   $success = '{"success": 1, "size": '.$size.', "url": "http://xxxxxxx/git/VKMusic/pub/'.$url.'"}';
 
    echo $success;
 

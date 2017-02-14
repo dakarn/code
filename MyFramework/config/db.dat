@@ -10,11 +10,11 @@
 
       'host' => 'localhost',
 
-      'user' => 'root',
+      'user' => 'xxxx',
 
-      'password' => '234679',
+      'password' => 'xxxx',
 
-      'db' => 'topct',
+      'db' => 'xxxx',
 
       'charset' => 'cp1251',
 
