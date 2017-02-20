@@ -46,7 +46,7 @@
        $this->jsondata = '';
 
 
-       $postfield = 'act=a_load_section&al=1&album_id=-1&claim=0&offset='.$offset.'&owner_id=113537351&search_history=0&search_lyrics=0&search_performer=0&search_q='.$this->name.'&search_sort=0&type=search';
+       $postfield = 'act=a_load_section&al=1&album_id=1629317882&claim=0&offset='.$offset.'&owner_id=113537351&search_history=0&search_lyrics=0&search_performer=0&search_q='.$this->name.'&search_sort=0&type=search';
 
        $c = curl_init('https://vk.com/al_audio.php'); 
 
@@ -72,7 +72,7 @@
     public function getFile( $id , $id1 )
     {
          
-         $postfield = 'act=reload_audio&al=1&album_id=-1&ids='.$id1.'_'.$id.'';
+         $postfield = 'act=reload_audio&al=1&ids='.$id1.'_'.$id.'';
 
          $c = curl_init('https://vk.com/al_audio.php'); 
 

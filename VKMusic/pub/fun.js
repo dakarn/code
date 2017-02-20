@@ -90,8 +90,9 @@ var Music = (function( )
         class=item-music data-id='+lists[k].id+' data-duration="'+lists[k].length+'" data-id1='+lists[k].id1+'>\
         '+resName[0]+'  -  '+resName[1]+'\
         <div class=img_fun>\ <div class=duration><small> '+dur[0]+':'+dur[1]+' </small></div>\
-        <img onClick = "Music.loadingFile('+k+', Music.refreshLoad)" title="Скачать" src=pub/img/loadfile.png height=17>\
-        <img id=goimg'+k+' onClick = "Music.loadingFile('+k+', Music.player)" title="Воспроизвести" src=pub/img/musicplay.png height=17></div>\
+         <img onClick = "Music.loadingFile('+k+', Music.refreshLoad)" title="Скачать" src=pub/img/loadfile.png height=17>\
+         <img id=goimg'+k+' onClick = "Music.loadingFile('+k+', Music.player)" title="Воспроизвести" src=pub/img/musicplay.png height=17>\
+        </div>\
         </div>';
         
 
