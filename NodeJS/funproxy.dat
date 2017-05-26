@@ -1,0 +1,29 @@
+[Types proxy]
+HTTP-Proxy: on
+HTTPS-Proxy: on
+SOCKS-Proxy: on
+
+[Port proxy]
+HTTP-Proxy: 1150
+HTTPS-Proxy: 33300
+SOCKS-Proxy: 1080
+
+[Blacklist domain]
+domain.ru
+site.ru
+
+[Types HTTP method]
+POST: on
+GET: on
+PUT: on
+DELETE: on
+CONNECT: on
+OPTIONS: on
+HEAD: on
+TRACE: on
+
+[Maximum speed for Files in KB]
+flv: 256
+mp4: 512
+avi: 512
+mp3: 50
