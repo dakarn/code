@@ -60,29 +60,29 @@ function run( sock, data, dataVar )
 
 		 dataVar.socket = net.connect( dataVar.port, dataVar.ip, function () {
 
-			 Options.setTraffic( index_user, data.toString().length, IP, headers );
-		     dataVar.socket.write(data);
+			Options.setTraffic( index_user, data.toString().length, IP, headers );
+			dataVar.socket.write(data);
 
 	     });
 
 	     dataVar.socket.on('data', function (chunk)
 	     {
 
-		     //console.log(Options.getUserMeta(index_user).threads);
-	     	 var len = chunk.length;
-		     Options.setTraffic( index_user, len, IP_USER, headers );
-		     sock.write(chunk);
+			var len = chunk.length;
+			Options.setTraffic( index_user, len, IP_USER, headers );
+			sock.write(chunk);
 
-		     if( Options.checkLimitTraffic(index_user) === false )
-		     {
-			     dataVar.len_data_traffic += len;
+			if( Options.checkLimitTraffic(index_user) === false )
+			{
+			 dataVar.len_data_traffic += len;
 
-			     if( Options.checkUpTraffic( dataVar.len_data_traffic, index_user ) )
-			     {
-				     dataVar.socket.pause(); var diff = Opt.limitSpeed() - dataVar.len_data_traffic;
-				     setTimeout(function () { dataVar.len_data_traffic = 0; dataVar.socket.resume(); }, 1000+Math.floor(Math.abs(diff)/100));
-			     }
-		     }
+			 if( Options.checkUpTraffic( dataVar.len_data_traffic, index_user ) )
+			 {
+				 dataVar.socket.pause(); var diff = Opt.limitSpeed() - dataVar.len_data_traffic;
+				 setTimeout(function () { dataVar.len_data_traffic = 0; dataVar.socket.resume(); }, 1000+Math.floor(Math.abs(diff)/100));
+			 }
+			}
+			
 	     });
 
 
