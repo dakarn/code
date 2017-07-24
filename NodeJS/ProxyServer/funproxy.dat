@@ -1,0 +1,51 @@
+[Types proxy]
+HTTP-Proxy: on
+HTTPS-Proxy: on
+SOCKS-Proxy: on
+
+[Port proxy]
+HTTP-Proxy: 1150
+HTTPS-Proxy: 33300
+SOCKS-Proxy: 1080
+
+[Blacklist domain]
+domain.ru
+filmsmob.ru
+
+[Types HTTP method]
+POST: on
+GET: on
+PUT: on
+DELETE: on
+OPTIONS: on
+HEAD: on
+TRACE: on
+
+[GlobalOptions]
+BasicAuth: on
+SocksAuth: on
+CutSpeedThreads: on
+MaxClientHttp: 100
+MaxClientHttps: 140
+MaxClientSock4: 200
+MaxClientSock5: 200
+LimitSpeed: 100000
+MaxLimitTraffic: 1000000000
+CountThreadsforLimitSpeed: 20
+IpBinding: on
+MaxThreadsKey: 50
+
+
+[MaximumSpeed]
+flv: 256000
+mp4: 512000
+avi: 512000
+mp3: 50000
+doc: 1000000
+other: 1000000000
+txt: 256000
+flaq: 512000
+mkv: 1000000
+zip: 1000000
+exe: 1000000
+rar: 512000
