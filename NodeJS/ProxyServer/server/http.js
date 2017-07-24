@@ -41,7 +41,7 @@ function run( req, res )
 
 			proxyResponse.on('data', function(chunk)
 			{
-				//console.log(Options.getUserMeta(index_user).threads);
+				
 				var len = chunk.length;
 				Options.setTraffic( index_user, len, IP, req.headers );
 				res.write(chunk, 'binary');
