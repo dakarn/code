@@ -147,7 +147,7 @@ function CutSpeed( index_user )
 
 		if( th.threads <= limit_count_threads ){ return limit_speed; }
 
-		return limit_speed;//parseInt( limit_speed/Options.getUserMeta(index_user).threads );
+		return parseInt( limit_speed/Options.getUserMeta(index_user).threads );
 	}
 
 	return limit_speed;
