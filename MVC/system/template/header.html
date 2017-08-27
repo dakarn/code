@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Главная страница</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="http://5.19.253.227/testbeejee/public/css/style.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="http://5.19.253.227/testbeejee/public/js/script.js"></script>
+	<script src="http://5.19.253.227/testbeejee/public/js/picture.js?<?= time()?>"></script>
+
+	<link rel="icon" type="image/x-icon" href="http://5.19.253.227/testbeejee/public/picture/favicon.png" />
+
+</head>
+<body>
+
+<header>
+
+	<h2>Приложение задачник</h2><br>
+
+	<a href="/testbeejee/admin/">Админ-Панель</a>
+
+	<? if( isset( $_SESSION['admin'] ) ) : ?>
+		| <a href="/testbeejee/admin/logout/">Выйти из админки</a>
+	<? endif; ?>
+
+	<br>
+
+</header>

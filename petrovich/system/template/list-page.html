@@ -1,0 +1,35 @@
+<?php
+
+ $title = 'Список страниц';
+
+ include('header.html');
+
+?>
+
+<div class="content">
+
+	<p><b>Список всех страниц:</b></p><br>
+
+	<?= Helper\Pagination::getInstance()->prev() ?>
+	<?= Helper\Pagination::getInstance()->next() ?>
+	<br><br><br>
+
+	<? foreach( $pages as $k => $page ) : ?>
+
+		<div>
+			<b><?= ( $offset + $k + 1 ) ?>. <a href="<?= URL ?>item-page/?id=<?= $page->pageId ?>"><?= $page->title ?></a></b><br>
+			PageId: <?= $page->pageId ?><br>
+			Дата модификации/создания: <?= $page->modified ?>
+			<br><br>
+		</div>
+
+	<? endforeach; ?>
+
+	<br><br>
+	<?= Helper\Pagination::getInstance()->prev() ?>
+	<?= Helper\Pagination::getInstance()->next() ?>
+	<br>
+
+</div>
+
+<? include('footer.html'); ?>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title><?= $data['title'] ?></title>
+	<meta name="keywords" content="<?= $data['keywords'] ?>" />
+</head>
+<body>
+
+	<? if( empty( $data ) ) : ?>
+
+		<h1>Такой страницы не найдено!</h1>
+
+	<? else: ?>
+
+		<?= $data['body'] ?>
+
+		<br><br><br><br>
+		<hr>
+		<a href="<?= URL ?>delete-page/?id=<?= $data['pageId'] ?>">Удалить страницу</a> |
+		<a href="<?= URL ?>edit-page/?id=<?= $data['pageId'] ?>">Изменить страницу</a> |
+		<a href="<?= URL ?>">Главная</a>
+
+	<? endif; ?>
+
+</body>
+</html>

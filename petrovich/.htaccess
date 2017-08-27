@@ -1,0 +1,8 @@
+AddDefaultCharset UTF-8
+Options -Indexes
+DirectoryIndex index.php index.html
+RewriteEngine on
+RewriteBase /petrovich
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ index\.php?options=$1
