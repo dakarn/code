@@ -1,0 +1,83 @@
+<?php include( TEMPLATE.'/header.html' ); ?>
+
+<div class="content">
+
+	<h3>Админ-Панель</h3><br>
+
+	<b>Сортировать по:</b> <a href="?sort=status<?=$page?>">Статусу задачи</a> | <a href="?sort=email<?=$page?>">E-mail</a> | <a href="?sort=username<?=$page?>">Имени пользователя</a> <br><br><br>
+
+	<br>
+	<?= Helper\Pagination::getInstance()->prev()?>
+	<?= Helper\Pagination::getInstance()->next()?>
+	<br><br><br>
+
+	<? if( count( $listing ) === 0 ) : ?>
+		<div class="alert alert-info"><b>Задач на данный момент нет</b></div>
+	<? endif; ?>
+
+	<? foreach( $listing as $key => $value ) { ?>
+
+		<? $execute = ''; ?>
+
+		<div style="border: thin solid silver; padding: 14px;">
+
+			<p><b>Имя пользователя:</b> <?= htmlspecialchars( $value->username ) ?></p>
+			<p><b>E-mail:</b> <?= htmlspecialchars( $value->email ) ?></p>
+			<p><b>Текст задачи:</b> <?= htmlspecialchars( $value->text ) ?></p>
+			<p><b>Статус задачи:</b>
+
+			<? if( $value->status == 'execute' ) : ?>
+
+				<? $execute = 'checked'; ?>
+				<span style="font-size: 17px; color: green;">Выполнено</span>
+
+			<? else: ?>
+
+				Не выполнено
+
+			<? endif; ?>
+			</p>
+
+			<p><b>Картинка:</b>
+			<a href="" style="cursor: pointer" onclick="$('#pic-id-<?= $value->id ?>').slideToggle(); return false;"></a>
+			<div id="pic-id-<?= $value->id ?>">
+				<a href="/testbeejee/public/picture/task/<?= $value->picture ?>"><img src="/testbeejee/public/picture/task/<?= $value->picture ?>"></a>
+			</div></p>
+			<br>
+
+		    <br><br><p>
+		    <button onClick="$('.id-task-<?= $value->id?>').slideToggle()" class="btn btn-primary">Изменить</button>
+		    </p>
+
+		    <div class="form-edit id-task-<?= $value->id?>">
+
+			    <h4>Редактирование задачи c ID <?= $value->id ?></h4><br>
+			    <form action="<?=URL?>admin/edit-task/" method="post">
+
+				    <label>Текст задачи:</label>
+				    <textarea class="form-control" name="text" required><?= $value->text ?></textarea>
+
+				    <br>
+				    <input value="execute" name="status" type="checkbox" <?= $execute?> >Задача выполнена
+
+				    <input type="hidden" name="idTask" value="<?= $value->id ?>">
+				    <br><br>
+				    <input type="submit" class="btn btn-primary" value="Внести изменения"><br><br>
+
+			    </form>
+			    <br>
+
+		    </div>
+
+	    </div>
+
+	<? } ?>
+
+	<br><br>
+	<?= Helper\Pagination::getInstance()->prev()?>
+	<?= Helper\Pagination::getInstance()->next()?>
+	<br>
+
+</div>
+
+<?php include( TEMPLATE.'/footer.html' ); ?>

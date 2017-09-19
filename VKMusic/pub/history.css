@@ -1,0 +1,29 @@
+ .item-history {
+
+   padding: 6px;
+   word-wrap: break-word;
+   font-size: 18px;
+   width: 154px;
+
+ }
+
+
+ .item-history:hover {
+
+   font-weight: 600;
+   cursor: pointer;
+   background: silver;
+   border-radius: 4px 4px 4px 4px;
+
+ }
+
+
+ #history-search {
+
+   margin-left: 30px;
+   padding: 10px;
+   text-align: left;
+   
+
+
+ }

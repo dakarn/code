@@ -1,0 +1,44 @@
+body {
+
+	width: 1000px;
+	margin: 0px auto;
+}
+
+header {
+
+	border: thin solid gray;
+	padding: 12px;
+}
+
+footer {
+
+	height: 80px;
+	border: thin solid gray;
+	padding: 12px;
+}
+
+
+.content {
+
+	padding: 18px;
+	border: thin solid gray;
+	border-top: none;
+}
+
+
+.title-task {
+
+	display: none;
+}
+
+.review-task {
+
+	padding: 12px;
+	display: block;
+}
+
+.form-edit {
+
+	display: none;
+	padding: 12px;
+}

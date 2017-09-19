@@ -1,0 +1,23 @@
+<?
+
+
+  $db = array(
+
+
+
+
+    'database' => array(
+
+      'host' => 'localhost',
+
+      'user' => 'xxxx',
+
+      'password' => 'xxxx',
+
+      'db' => 'xxxx',
+
+      'charset' => 'cp1251',
+
+    ),
+
+ );

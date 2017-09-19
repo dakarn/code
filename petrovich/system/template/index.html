@@ -1,0 +1,25 @@
+<?php
+
+ $title = 'Главная страница';
+
+ include('header.html');
+
+?>
+
+<div class="content">
+
+	<p><b>Список последних страниц:</b></p><br>
+
+	<? foreach( $pages as $k => $page ) : ?>
+
+		<div>
+			<b><?= ( $k + 1 ) ?>. <a href="<?= URL ?>item-page/?id=<?= $page->pageId ?>"><?= $page->title ?></a></b><br>
+			Дата модификации/создания: <?= $page->modified ?>
+			<br><br>
+		</div>
+
+	<? endforeach; ?>
+
+</div>
+
+<? include('footer.html'); ?>

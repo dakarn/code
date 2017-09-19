@@ -1,0 +1,45 @@
+<?php include( 'header.html' ); ?>
+
+<div class="content">
+
+	<? if( count ($errors) > 0 && $errors[0] != 'success' ) { ?>
+
+		<div class="alert alert-danger">
+
+			<?php foreach( $errors as $error)
+			{
+				echo '<b>'.$error.'</b><br>';
+			} ?>
+
+		</div>
+
+	<? } else if( $_SERVER['REQUEST_METHOD'] == 'POST' ){ ?>
+
+		<div class="alert alert-success"><b>Задание добавлено в задачник.</b></div>
+
+	<? } ?>
+
+	<br>
+	<p>
+		<?php include( 'form-create-task.html' ); ?>
+	</p>
+	<br>
+
+	<div class="review-task">
+		<div class="title-task">
+			<hr>
+			<h3>Предварительный просмотр</h3><br>
+
+			<b>Имя пользователя:</b> <span id="username-review"></span><br>
+			<b>E-mail:</b>  <span id="email-review"></span><br>
+			<b>Текст задачи:</b>  <span id="text-review"></span><br>
+			<b>Статус задачи: </b> Не выполнено<br>
+			<b>Изображение:</b><br><br>  <div id="picture-review"></div><br><br><br>
+		</div>
+	</div>
+
+</div>
+
+<div style="display: none;" id="picture-compress"></div>
+
+<?php include( 'footer.html' ); ?>
