@@ -1,4 +1,4 @@
-﻿function getID( id )
+function getID( id )
 {
 
   return document.getElementById(id);
@@ -149,3 +149,4 @@ var Window = (function()
 
 
 })();
+>>>>>>> f7f2558e7c9e4ad3020921b10b06588c25d1a1e7
