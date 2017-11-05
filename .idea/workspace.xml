@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c7f0a1e6-b3b7-49dc-9fdb-d5951cfe9f0d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Symfony3/CacheBundle/CacheInterface.php" afterPath="$PROJECT_DIR$/Symfony3/CacheBundle/CacheInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Symfony3/CacheBundle/FileSystemCache.php" afterPath="$PROJECT_DIR$/Symfony3/CacheBundle/FileSystemCache.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Symfony3/Pagination/Pagination.php" afterPath="$PROJECT_DIR$/Symfony3/Pagination/Pagination.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VKMusic/pub/ajax.php" afterPath="$PROJECT_DIR$/VKMusic/pub/ajax.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VKMusic/sys/VKload.php" afterPath="$PROJECT_DIR$/VKMusic/sys/VKload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VKMusic/sys/controller/loadingFile.php" afterPath="$PROJECT_DIR$/VKMusic/sys/controller/loadingFile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/VKMusic/sys/controller/requestList.php" afterPath="$PROJECT_DIR$/VKMusic/sys/controller/requestList.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/generator.php" afterPath="$PROJECT_DIR$/generator.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,31 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="generator.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="generator.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/generator.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Pagination.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Symfony3/Pagination/Pagination.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="290">
-              <caret line="140" column="29" lean-forward="true" selection-start-line="140" selection-start-column="29" selection-end-line="140" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileSystemCache.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Symfony3/CacheBundle/FileSystemCache.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+            <state relative-caret-position="191">
+              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -72,6 +53,10 @@
         <option value="$PROJECT_DIR$/Symfony3/Pagination/Pagination.php" />
         <option value="$PROJECT_DIR$/Symfony3/CacheBundle/CacheInterface.php" />
         <option value="$PROJECT_DIR$/Symfony3/CacheBundle/FileSystemCache.php" />
+        <option value="$PROJECT_DIR$/VKMusic/sys/VKload.php" />
+        <option value="$PROJECT_DIR$/VKMusic/sys/controller/loadingFile.php" />
+        <option value="$PROJECT_DIR$/VKMusic/sys/controller/requestList.php" />
+        <option value="$PROJECT_DIR$/VKMusic/pub/ajax.php" />
       </list>
     </option>
   </component>
@@ -112,38 +97,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="git" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="git" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony3" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="git" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Symfony3" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CacheBundle" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -252,7 +205,7 @@
       <workItem from="1505842010218" duration="939000" />
       <workItem from="1506179886649" duration="10000" />
       <workItem from="1509740164856" duration="2552000" />
-      <workItem from="1509871692465" duration="14599000" />
+      <workItem from="1509871692465" duration="15219000" />
     </task>
     <task id="LOCAL-00001" summary="Генератор текста по цепям маркова">
       <created>1509890168742</created>
@@ -261,11 +214,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509890168742</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="New Data">
+      <created>1509891109844</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1509891109844</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18100000" />
+    <option name="totallyTimeSpent" value="18720000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -307,7 +267,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Генератор текста по цепям маркова" />
-    <option name="LAST_COMMIT_MESSAGE" value="Генератор текста по цепям маркова" />
+    <MESSAGE value="New Data" />
+    <option name="LAST_COMMIT_MESSAGE" value="New Data" />
   </component>
   <component name="WindowStateProjectService">
     <state width="483" height="397" key="Git.Branch.Popup" />
@@ -342,10 +303,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generator.php">
+    <entry file="file://$PROJECT_DIR$/Symfony3/CacheBundle/CacheInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="63" column="16" lean-forward="false" selection-start-line="63" selection-start-column="16" selection-end-line="63" selection-end-column="16" />
+        <state relative-caret-position="340">
+          <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Symfony3/CacheBundle/FileSystemCache.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="124" column="33" lean-forward="true" selection-start-line="124" selection-start-column="33" selection-end-line="124" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -358,18 +327,81 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Symfony3/CacheBundle/CacheInterface.php">
+    <entry file="file://$PROJECT_DIR$/Symfony3/CacheBundle/cache-file/test.cache">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="37" lean-forward="false" selection-start-line="20" selection-start-column="37" selection-end-line="20" selection-end-column="37" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Symfony3/CacheBundle/FileSystemCache.php">
+    <entry file="file://$PROJECT_DIR$/VKMusic/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="119" column="0" lean-forward="true" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+        <state relative-caret-position="-255">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VKMusic/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VKMusic/sys/VKload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="752">
+          <caret line="106" column="12" lean-forward="true" selection-start-line="106" selection-start-column="12" selection-end-line="106" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VKMusic/sys/controller/loadingFile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VKMusic/sys/controller/requestList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" lean-forward="true" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VKMusic/pub/ajax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VKMusic/pub/fun.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding>
+            <marker date="1487539618079" expanded="true" signature="1476:1571" ph="..." />
+            <marker date="1487539618079" expanded="true" signature="2018:2450" ph="..." />
+            <marker date="1487539618079" expanded="true" signature="2090:2434" ph="..." />
+            <marker date="1487539618079" expanded="true" signature="2584:2670" ph="..." />
+            <marker date="1487539618079" expanded="true" signature="3423:3556" ph="..." />
+            <marker date="1487539618079" expanded="false" signature="3472:3498" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding />
         </state>
       </provider>

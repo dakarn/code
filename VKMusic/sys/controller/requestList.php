@@ -1,65 +1,41 @@
 <?
 
- function requestList( )
- {
+function requestList( )
+{
+	include('../sys/VKload.php');
 
+	$offset = abs(intval($_POST['offset']));
+	$vk     = new VKload($_POST['title']);
+	$js     = $vk->getMusic($offset);
+	$count  = $vk->getCount()[1];
 
-   include( '../sys/VKload.php' );
+	if ($count == 0) {
 
+	   $success = '{"success": 0,"message": "пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ!"}';
+	   echo $success;
 
-   $offset = abs( intval( $_POST['offset'] ) );
+	} else {
 
-
-   $vk = new VKload( $_POST['title'] );
-
-   $js = $vk->getMusic( $offset );
-
-
-   $count = $vk->getCount()[1]; 
-
-
-   if( $count == 0 )
-   {
-
-       $success = '{"success": 0,"message": "По вашему запросу ничего не найдено!"}';
-       echo $success;
-
-  } else {
-
-
-       $json = arraytojson( $js );
-
+       $json    = arraytojson( $js );
        $success = '{"success": 1,"count": '.$count.', "list":';
-       
        echo $success.$json.'}';
-
-  } 
-
-   
-
- }
+    }
 
 
+}
 
- function arraytojson( $js )
- {
+function arraytojson( $js )
+{
+	$str   = '[';
+	$count = count ($js);
 
-   $str = '[';
+	for ($i = 0; $i < $count; $i++) {
 
-   $count = count ( $js );
+		$str .= '{"artist": "'.$js[$i]['artist'].'","title": "'.$js[$i]['title'].'","length": '.$js[$i]['length'].',"id": '.$js[$i]['id'].',"id1": '.$js[$i]['id1'].'},';
+	}
 
-   for( $i = 0; $i < $count; $i++ )
-   {
+	$str  = substr($str, 0, strlen($str) - 1);
+	$str .= ']';
 
-    $str .= '{"artist": "'.$js[$i]['artist'].'","title": "'.$js[$i]['title'].'","length": '.$js[$i]['length'].',"id": '.$js[$i]['id'].',"id1": '.$js[$i]['id1'].'},';
-
-   }
-
-   $str = substr( $str , 0 , strlen( $str ) - 1 );
-
-   $str .= ']';
-
-   return $str;
-
-
- }
+	return $str;
+}
