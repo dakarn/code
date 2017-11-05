@@ -9,7 +9,6 @@ var error500 = 'HTTP/1.1 500 Connection error\r\n\r\n';
 
 function run( sock, data, dataVar )
 {
-
 	if( !Opt.checkMaxClient( sock, 1 ) ) return;
 
 	var IP = sock.remoteAddress.split(":").pop();
@@ -18,8 +17,7 @@ function run( sock, data, dataVar )
 	sock.on( 'end', function(){ if( dataVar.socket ){ dataVar.socket.end(); } return; });
 	sock.on( 'error', function( error ) { if( dataVar.socket ){ dataVar.socket.end(); } return; });
 
-	if( isHelloServer( data, dataVar.version ) )
-	{
+	if (isHelloServer( data, dataVar.version)) {
 
 		dataVar.version = 4;
 		dataVar.port = data[3];
@@ -27,8 +25,7 @@ function run( sock, data, dataVar )
 
 		sock.write( chr(0)+''+chr(90)+code );
 
-	} else if( isGetContent( dataVar.version ) )
-	{
+	} else if (isGetContent( dataVar.version)) {
 
 		var headers = Opt.parseHead( data );
 		var host = headers.Host;
@@ -41,13 +38,11 @@ function run( sock, data, dataVar )
 		Options.setThreadUser( index_user, 1 );
 		Options.setTraffic( index_user, data.toString().length, IP, headers );
 
-
 		dataVar.socket = net.connect( dataVar.port, dataVar.ip, function()
 		{
 			Options.setTraffic( index_user, data.toString().length, IP, headers );
 			dataVar.socket.write( data );
 		});
-
 
 		dataVar.socket.on('data', function(chunk)
 		{
@@ -69,31 +64,31 @@ function run( sock, data, dataVar )
 		});
 
 		dataVar.socket.on('end', function() { Options.setThreadUser( index_user, 0 ); sock.end(); });
-
 		dataVar.socket.on('error', function() { sock.write( error500 ); sock.end(); });
 
 	}
 
 }
 
-
 function isHelloServer( data, version )
 {
-	if( data[0] === 4 && version === 0 ) return true;
+	if (data[0] === 4 && version === 0) {
+		return true;
+	}
 	return false;
 }
 
 function isGetContent( version )
 {
-	if( version === 4  ) return true;
+	if (version === 4) {
+		return true;
+	}
 	return false;
 }
-
 
 function chr( code )
 {
 	return String.fromCharCode( code );
 }
-
 
 exports.run = run;

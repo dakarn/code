@@ -6,7 +6,6 @@ var opt_arr = [];
 var opt_value_arr = [];
 var setFunLoad;
 var accept_file = 'denied-ip.dat';
-
 var error = ['File options not found'];
 
 function Loader(){}
@@ -15,38 +14,35 @@ Loader.accessList = [];
 
 Loader.options = function () {
 
-	try
-	{
-		fs.readFile( file, function( err , data )
-		{
+	try {
+		fs.readFile(file, function (err, data) {
 
-			if( err ){ throw error[0]; }
+			if (err) {
+				throw error[0];
+			}
 
-			Loader.parseOptions( data.toString() );
+			Loader.parseOptions(data.toString());
 			setFunLoad();
 
 		});
 
-	} catch(e){ console.error(e); }
-
+	} catch (e) {
+		console.error(e);
+	}
 }
 
-
-
-Loader.getOpt = function( item )
+Loader.getOpt = function(item)
 {
+	var key = opt_arr.indexOf(item);
 
-	var key = opt_arr.indexOf( item );
-
-	if( arguments[2] && arguments[2] === true && key !== -1 )
-	{
+	if (arguments[2] && arguments[2] === true && key !== -1) {
 		return opt_value_arr[key][arguments[1]].toString().split(": ")[1];
 	}
 
 	return opt_value_arr[key] === -1 ? false : opt_value_arr[key];
 }
 
-Loader.parseOptions = function( data )
+Loader.parseOptions = function(data)
 {
 
 	var index = data.indexOf("[Types proxy]"); var nul = data.indexOf("\r\n\r\n");
@@ -89,9 +85,7 @@ Loader.parseOptions = function( data )
 	Options.getAccessKey();
 }
 
-
-
-Loader.onLoad = function( callback)
+Loader.onLoad = function(callback)
 {
 	setFunLoad = callback;
 }

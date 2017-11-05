@@ -13,7 +13,6 @@ var http = 'HTTP/';
 
 function run( req, res, head )
 {
-
 	try
 	{
 		if( !Opt.checkMaxClient( res, 1 ) ) return;
@@ -78,7 +77,6 @@ function run( req, res, head )
 
 		res.on('end', function() { socket.end(); });
 		res.on('error', function() { socket.end(); });
-
 
 	} catch( e ){ console.error(e); }
 

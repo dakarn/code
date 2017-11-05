@@ -11,7 +11,6 @@ var httpsServer = require('./server/https.js');
 var sock4Server = require('./server/sock4.js');
 var sock5Server = require('./server/sock5.js');
 
-
 loader.Loader.options();
 
 loader.Loader.onLoad( function()
@@ -20,41 +19,40 @@ loader.Loader.onLoad( function()
 	runServers();
 });
 
-
 function runServers()
 {
-
 	try
 	{
-
 		var typesProxy = loader.Loader.getOpt('types');
 		var port = loader.Loader.getOpt('port');
 
-		if (typesProxy[1] === "HTTPS-Proxy: on")
-		{
+		if (typesProxy[1] === "HTTPS-Proxy: on") {
+
 			var serverhttps = http.createServer( httpsServer.requestdatahttps );
 			serverhttps.on('connect', httpsServer.run );
-			serverhttps.listen( port[1].split(" ")[1], function() {} );
+			serverhttps.listen( port[1].split(" ")[1], function(){});
 		}
 
-		if (typesProxy[0] === "HTTP-Proxy: on")
-		{
-			var server = http.createServer( httpServer.run );
-			server.listen( port[0].split(" ")[1], function() {} );
+		if (typesProxy[0] === "HTTP-Proxy: on") {
+
+			var server = http.createServer(httpServer.run);
+			server.listen(port[0].split(" ")[1], function(){
+			});
 		}
 
-		if (typesProxy[2] === "SOCKS-Proxy: on")
-		{
-			var sock = net.createServer( sockserver ).listen( port[2].split(" ")[1] );
+		if (typesProxy[2] === "SOCKS-Proxy: on") {
+
+			var sock = net.createServer( sockserver ).listen(port[2].split(" ")[1]);
 		}
 
-	} catch (e){ console.log(e); }
+	} catch (e){
+		console.log(e);
+	}
 
 }
 
-function sockserver( sock )
+function sockserver(sock)
 {
-
 	var version = 0;
 	var ip = '';
 	var port = 0;
@@ -64,23 +62,30 @@ function sockserver( sock )
 	var isHTTPS = false;
 	var len_data_traffic = 0;
 
-	var dataVar = { isHTTPS: isHTTPS, version: version, len_data_traffic: len_data_traffic,
-					ip: ip, port: port, socket: socket, domainsip: domainsip, typeip: typeip };
+	var dataVar = {
+		isHTTPS: isHTTPS,
+		version: version,
+		len_data_traffic: len_data_traffic,
+		ip: ip,
+		port: port,
+		socket: socket,
+		domainsip: domainsip,
+		typeip: typeip
+	};
 
-	 try
-	 {
-		  sock.on('data', function( data )
-		  {
+	try {
+		sock.on('data', function (data) {
 
-			  sock4Server.run( sock, data, dataVar );
-		      sock5Server.run( sock, data, dataVar );
+			sock4Server.run(sock, data, dataVar);
+			sock5Server.run(sock, data, dataVar);
 
-		  });
+		});
 
-	 } catch( e ){ console.error( e ); }
+	} catch (e) {
+		console.error(e);
+	 }
 
 }
-
 
 function traficCount()
 {
